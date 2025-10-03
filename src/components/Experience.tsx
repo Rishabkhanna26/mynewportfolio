@@ -4,44 +4,43 @@ import { useInView } from '../hooks/useInView';
 
 const experiences = [
   {
-    title: 'Senior WordPress Developer',
+    title: ' Web Developer',
     company: 'Freelance',
-    period: '2020 - Present',
+    period: '2022 - Present',
     type: 'Full-time',
     description: 'Leading complex WordPress projects, specializing in custom plugin development, theme customization, and performance optimization for diverse clients worldwide.',
     achievements: [
-      'Developed 50+ custom plugins for e-commerce solutions',
+      'Developed custom plugins for e-commerce solutions',
       'Optimized website performance resulting in 50% faster load times',
       'Integrated multiple third-party APIs and payment gateways',
-      'Managed and delivered 100+ client projects successfully'
+      'Managed and delivered projects for clients on time successfully'
     ],
     color: 'from-amber-500 via-rose-500 to-purple-500'
   },
   {
-    title: 'Web Developer',
-    company: 'Tech Solutions',
-    period: '2018 - 2020',
-    type: 'Full-time',
+    title: 'Administrator',
+    company: 'Right IAS',
+    period: '2022 - Present',
+    type: 'Freelance',
     description: 'Full-stack web development focusing on PHP, JavaScript, and MySQL database management with emphasis on scalable architecture.',
     achievements: [
-      'Built responsive web applications using modern frameworks',
-      'Implemented RESTful APIs for mobile applications',
-      'Mentored junior developers in best practices',
+      'Built responsive web applications using Wordpress',
+      'Monitoring and maintaining Site Health and Security',
       'Reduced bug rate by 40% through code review processes'
     ],
     color: 'from-purple-500 via-pink-500 to-rose-500'
   },
   {
-    title: 'Junior Developer',
-    company: 'Digital Agency',
-    period: '2016 - 2018',
+    title: 'Junior Full Stack Developer',
+    company: 'Erosteps',
+    period: '2023 - Present',
     type: 'Full-time',
     description: 'Started career in web development, working on client websites and learning industry standards while building foundational skills.',
     achievements: [
-      'Maintained and updated 30+ client WordPress websites',
+      'Maintained and updated 10+ client WordPress websites',
       'Implemented custom CSS and JavaScript features',
       'Collaborated with design team on UI/UX improvements',
-      'Achieved 98% client satisfaction rating'
+      'Achieved client satisfaction rating'
     ],
     color: 'from-rose-500 via-orange-500 to-amber-500'
   }
@@ -175,17 +174,17 @@ export default function Experience() {
             <div className="inline-flex flex-wrap items-center justify-center gap-8 p-8 bg-gradient-to-br from-white to-purple-50 rounded-3xl shadow-2xl border-2 border-purple-200">
               <div className="text-center">
                 <p className="text-sm font-semibold text-slate-600 mb-1">Projects Completed</p>
-                <p className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">150+</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent">30+</p>
               </div>
               <div className="w-px h-16 bg-gradient-to-b from-transparent via-purple-300 to-transparent hidden sm:block"></div>
               <div className="text-center">
-                <p className="text-sm font-semibold text-slate-600 mb-1">Happy Clients</p>
-                <p className="text-4xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent">100+</p>
+                <p className="text-sm font-semibold text-slate-600 mb-1">On Time Delivery</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-rose-600 to-amber-600 bg-clip-text text-transparent">95%</p>
               </div>
               <div className="w-px h-16 bg-gradient-to-b from-transparent via-rose-300 to-transparent hidden sm:block"></div>
               <div className="text-center">
-                <p className="text-sm font-semibold text-slate-600 mb-1">Success Rate</p>
-                <p className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-purple-600 bg-clip-text text-transparent">98%</p>
+                <p className="text-sm font-semibold text-slate-600 mb-1">Client Satisfaction Rate</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-amber-600 to-purple-600 bg-clip-text text-transparent">100%</p>
               </div>
             </div>
           </div>

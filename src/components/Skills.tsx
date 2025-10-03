@@ -128,7 +128,7 @@ export default function Skills() {
                 Years of Experience
               </p>
               <p className="text-6xl font-bold bg-gradient-to-r from-amber-500 via-rose-500 to-purple-500 bg-clip-text text-transparent animate-pulse-slow">
-                8+
+                2+
               </p>
             </div>
           </div>
