@@ -29,6 +29,14 @@
     animation: float 3s ease-in-out infinite;
   }
 
+  .nav-logo-transition {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-scroll-shrink {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .animation-delay-200 {
     animation-delay: 0.2s;
   }
