@@ -12,35 +12,41 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
-    // Build mailto and gmail compose links
-    const to = 'teamalgoaura@gmail.com';
-    const subject = encodeURIComponent(`Message from ${formData.name || 'Website Visitor'}`);
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-
-    // First try to open user's mail client
-    const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
-
-    // Also prepare Gmail web compose URL as a fallback
-    const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${subject}&body=${body}`;
-
-    // Use window.open for webmail fallback, then navigate to mailto which opens native client
-    // Try to open gmail in a new tab (useful for users in browser), then fallback to mailto
     try {
-      window.open(gmail, '_blank');
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Failed to send email");
+        setIsLoading(false);
+        return;
+      }
+
+      // Success
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setIsSubmitted(false), 3000);
     } catch (err) {
-      // ignore
+      console.error("Form submission error:", err);
+      setError("Network error. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
-
-    // Finally trigger mailto to open native client
-    window.location.href = mailto;
-
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   const handleChange = (e) => {
@@ -90,10 +96,10 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold mb-1 text-slate-200">Email</h4>
                     <a
-                      href="mailto:teamalgoaura@gmail.com"
+                      href="mailto:rishabkhanna26@gmail.com"
                       className="text-blue-400 hover:text-blue-300 transition-colors"
                     >
-                      teamalgoaura@gmail.com
+                      rishabkhanna26@gmail.com
                     </a>
                   </div>
                 </div>
@@ -206,10 +212,15 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  disabled={isSubmitted}
+                  disabled={isSubmitted || isLoading}
                   className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                      {isSubmitted ? (
+                  {isLoading ? (
+                    <>
+                      <span className="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : isSubmitted ? (
                     <>
                       {Icons.Check ? <Icons.Check size={20} /> : <span />}
                       Message Sent!
@@ -221,8 +232,13 @@ export default function Contact() {
                     </>
                   )}
                 </button>
-                
-              </form>
+
+                {error && (
+                  <div className="p-4 bg-red-600/20 border border-red-500/50 rounded-lg text-red-300">
+                    <p className="text-sm font-medium">{error}</p>
+                  </div>
+                )}
+                </form>
             </div>
           </div>
         </div>
